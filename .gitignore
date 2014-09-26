@@ -1,0 +1,16 @@
+i.*
+*.class
+
+/lib
+/bin
+
+.DS_Store
+.classpath
+.project
+.settings
+.idea/
+.svn/
+
+*.iml
+*.war
+*.ear
