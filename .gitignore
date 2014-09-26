@@ -1,7 +1,6 @@
 i.*
 *.class
 
-/lib
 /bin
 
 .DS_Store
