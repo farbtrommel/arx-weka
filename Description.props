@@ -1,0 +1,83 @@
+# Template Description file for a Weka package
+# 
+
+# Package name (required)
+PackageName=arxAnonymizer
+
+# Version (required)
+Version=1.0.0
+
+#Date (year-month-day)
+Date=2014-10-20
+
+# Title (required)
+Title=ARX Anonymization Filter
+
+# Category (recommended)
+Category=Preprocessing
+
+# Author (required)
+Author=Christian Windolf <christianwindolf@web.de>, Simon Könnecke <simon.koennecke@fu-berlin.de>, Andre Breitenfeld <andre.breitenfeld@fu-berlin.de>
+
+# Maintainer (required)
+Maintainer=Simon Könnecke <simon.koennecke@fu-berlin.de>
+
+# License (required)
+License=GNU GPL3
+
+# Description (required)
+Description=A one paragraph description of the package.
+
+# Package URL for obtaining the package archive (required)
+PackageURL=http://somewhere.net/weka/funkyPackage.zip?download
+
+# URL for further information
+URL=http://userpage.fu-berlin.de/semu/
+
+# Enhances various other packages ?
+#Enhances=packageName1,packageName2,...
+
+# Related to other packages?
+#Related=packageName1,packageName2,...
+
+# Dependencies (format: packageName (equality/inequality version_number)
+Depends=weka (>=3.7.1)
+
+# Message to display in installation. Can be used to provide
+# special instructions (e.g. manual stuff needed to complete
+# the installation process). (optional).
+#MessageToDisplayOnInstallation=Funky package requires some extra\n\
+ stuff to be installed after installing this package. You will\n\
+ need to blah, blah, blah in order to blah, blah, blah...
+
+# Prevent package from being loaded by Weka if the named
+# files/directories are not present (relative to the package's
+# root directory). Useful for packages that require the user
+# to manually install some third-party library(s). (optional)
+#DoNotLoadIfFileNotPresent=lib/someLibrary.jar,otherStuff/important,...
+
+# Log message to be displayed if package can't be loaded due to
+# missing files/directories. (optional)
+#DoNotLoadIfFileNotPresentMessage=funkyPackage can't be loaded because some \
+ funky libraries are missing. Please download funkyLibrary.jar from \
+ http://www.funky.com and install in $WEKA_HOME/packages/funkyPackage/lib
+
+# Prevent package from being loaded by Weka if the named
+# classes can't be instantiated. Useful for packages that rely
+# on stuff that has to be installed manually (an example is
+# Java3D, which installs itself into the system JRE/JDK. (optional)
+#DoNotLoadIfClassNotPresent=com.some.class.from.some.Where,org.some.other.Class,...
+
+# Log message to be displayed if package can't be loaded due to 
+# missing classes. (optional).
+#DoNotLoadIfClassNotPresentMessage=funkyPackage can't be loaded because \
+ com.funky.FunkyClass can't be instantiated. Have you downloaded and run \
+ the funky software installer for your platform?
+
+# Prevent package from being loaded by Weka if one or more (comma-separated)
+# environment variables or java properties are not set. (optional).
+#DoNotLoadIfEnvVarNotSet=
+
+# Log message to be displayed if package can't be loaded due to unset
+# environment variables or java properties.
+#DoNotLoadIfEnvVarNotSetMessage=
