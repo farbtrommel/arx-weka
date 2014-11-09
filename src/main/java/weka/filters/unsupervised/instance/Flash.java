@@ -28,6 +28,8 @@ import org.deidentifier.arx.ARFF2ARX;
 import weka.core.*;
 import weka.filters.SimpleBatchFilter;
 import weka.filters.UnsupervisedFilter;
+import weka.gui.GUIChooser;
+import weka.gui.explorer.Explorer;
 
 public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
 
@@ -148,8 +150,9 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
     }
 
     public static void main(String[] args) {
-        //Explorer.main(new String[] {});
-        runFilter(new Flash(), args);
+        //GUIChooser.main(args);
+        Explorer.main(args);
+        //runFilter(new Flash(), args);
     }
 
     @Override

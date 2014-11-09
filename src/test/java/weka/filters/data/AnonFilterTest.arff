@@ -1,0 +1,22 @@
+@relation 'AnonFilterTest'
+@attribute 'col1' string
+@attribute 'col2' string
+@attribute 'col3' numeric
+@attribute 'col4' date "yyyy-MM-dd"
+@attribute '_col5' string
+@attribute 'col6' string
+@attribute 'col7' numeric
+@data
+'AB','14168',1,"1971-02-12",'Car_Porsche_911','a',6
+'CD','14168',2,"1972-07-03",'Car_Porsche_Boxter','b',6
+'EF','14167',3,"1973-11-26",'Car_BMW_Z4','c',6
+'GH','14167',4,"1984-06-09",'Car_BMW_1','d',6
+'IJ','22498',1,"1985-05-21",'Car_BMW_3','e',6
+'KL','22456',2,"1986-09-30",'Car_Audi_TT','f',6
+'MN','34698',3,"1987-01-17",'Car_Audi_R8','g',6
+'OP','38698',4,"1978-02-12",'Car_Audi_A8','h',8
+'QR','34798',1,"1979-07-03",'Car_Audi_A7','i',8
+'ST','48555',2,"1970-11-26",'Car_Audi_A6','j',8
+'UV','48556',3,"1981-06-09",'Car_Audi_A5','k',8
+'WX','48557',4,"1982-05-21",'Car_Audi_A4','l',8
+'YZ','48558',1,"1983-09-30",'Car_Porsche_Cayman','m',8

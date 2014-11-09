@@ -2,7 +2,7 @@ i.*
 *.class
 
 /bin
-
+/build
 .DS_Store
 .classpath
 .project
