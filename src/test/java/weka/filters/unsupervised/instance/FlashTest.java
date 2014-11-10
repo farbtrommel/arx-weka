@@ -24,6 +24,6 @@ public class FlashTest extends AbstractFilterTest {
 
     @Override
     public Filter getFilter() {
-        return null;
+        return new Flash();
     }
 }
