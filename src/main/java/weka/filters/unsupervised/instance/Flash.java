@@ -235,7 +235,7 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
 
     @Override
     public String[] getOptions() {
-        List<String> options = new LinkedList<>(Arrays.asList(super.getOptions()));
+        List<String> options = new LinkedList<String>(Arrays.asList(super.getOptions()));
 
         if (this.getEnableKAnonymity()) {
             options.add("[K=" + this.getValueK() + "]");
