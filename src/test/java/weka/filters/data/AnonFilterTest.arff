@@ -3,7 +3,7 @@
 @attribute 'col2' string
 @attribute 'col3' numeric
 @attribute 'col4' date "yyyy-MM-dd"
-@attribute '_col5' string
+@attribute 'col5' string
 @attribute 'col6' string
 @attribute 'col7' numeric
 @data
