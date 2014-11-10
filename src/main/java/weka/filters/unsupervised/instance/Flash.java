@@ -33,6 +33,12 @@ import weka.gui.explorer.Explorer;
 
 public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	
 	protected Range _quasiIdentifiers = new Range("first-last");
     protected Range _sensitiveAttributes = new Range("");
     protected int _k = KL_MIN_VALUE;
@@ -159,10 +165,10 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
     public Enumeration<Option> listOptions() {
         Vector<Option> newVector = new Vector<Option>();
 
-        Option opt = super.listOptions().nextElement();
-        while(opt != null) {
-            newVector.addElement(opt);
-            opt = super.listOptions().nextElement();
+        Enumeration<Option> options = super.listOptions();
+        
+        while(options.hasMoreElements()) {
+            newVector.addElement(options.nextElement());
         }
 
         newVector.addElement(new Option("\tSpecify hierarchy folder", "H", 1, "-H <h>"));
@@ -237,7 +243,7 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
     public String[] getOptions() {
         List<String> options = new LinkedList<String>(Arrays.asList(super.getOptions()));
 
-        if (this.getEnableKAnonymity()) {
+        if (this.getEnableKAnonymity() && this.getValueK() > 2) {
             options.add("[K=" + this.getValueK() + "]");
         }
         if (this.getEnableLDiversity()) {

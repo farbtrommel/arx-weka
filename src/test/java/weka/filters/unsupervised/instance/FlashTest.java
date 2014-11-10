@@ -35,13 +35,19 @@ public class FlashTest extends AbstractFilterTest {
 	public Filter getFilter() {
 		Flash f = new Flash();
 		f.setDataHierarchyFolder(hierarchyFolder);
+		f.setDataSensitiveAttributes("6,7");
 		return f;
 	}
 	
 	protected File hierarchyFolder;
 
 	protected void setUp() throws Exception {
-		hierarchyFolder = File.createTempFile("flash", Long.toString(System.currentTimeMillis()));
+		hierarchyFolder = new File(System.getProperty("java.io.tmpdir"), "flash." + System.currentTimeMillis());
+		
+		if(!hierarchyFolder.mkdir()){
+			throw new IOException("I need to be able to create the folder " + hierarchyFolder.getAbsolutePath() + " but I can't (check write permission?)");
+		}
+		
 		m_Filter = getFilter();
 		m_Instances = new Instances(
 				new BufferedReader(
@@ -55,12 +61,7 @@ public class FlashTest extends AbstractFilterTest {
 		
 		
 		
-		if(hierarchyFolder.exists()){
-			throw new IOException("I need an empty folder " + hierarchyFolder.getAbsolutePath() + " but it already exists");
-		}
-		if(!hierarchyFolder.mkdir()){
-			throw new IOException("I need to be able to create the folder " + hierarchyFolder.getAbsolutePath() + " but I can't (check write permission?)");
-		}
+		
 		copyHierarchies("age");
 		copyHierarchies("car");
 		copyHierarchies("children");
@@ -72,7 +73,7 @@ public class FlashTest extends AbstractFilterTest {
 	}
 	
 	private void copyHierarchies(String hierarchy) throws IOException{
-		String filename = "test_hierachry_" + hierarchy + ".csv";
+		String filename = "test_hierarchy_" + hierarchy + ".csv";
 		InputStream in = ClassLoader.getSystemResourceAsStream(DATA_PATH + filename);
 		File file = new File(hierarchyFolder, filename);
 		file.createNewFile();
@@ -89,11 +90,22 @@ public class FlashTest extends AbstractFilterTest {
 	}
 
 	protected void tearDown() {
+		String[] files = hierarchyFolder.list();
+		for(String file : files){
+			File f = new File(hierarchyFolder, file);
+			f.delete();
+		}
+		hierarchyFolder.delete();
 		m_Filter = null;
 		m_Instances = null;
 		m_OptionTester = null;
 		m_GOETester = null;
 		m_FilteredClassifier = null;
+	}
+	
+	public void testKAnonymityFilter(){
+		Instances result = useFilter();
+		assertEquals(m_Instances.numInstances(), result.numInstances());
 	}
 	
 	
