@@ -30,11 +30,31 @@ import org.deidentifier.arx.io.CSVDataInput;
 import weka.core.Attribute;
 import weka.core.Instances;
 
+/**
+ * TODO
+ *
+ * @author Andre Breitenfeld
+ * @author Simon Könnecke
+ * @author Christian Windolf
+ *
+ */
 public class HierarchyBuilder {
 
+    /**
+     * Name of the relation.
+     */
 	protected String relation;
+
+    /**
+     * Path to the folder containing the hierarchies.
+     */
 	protected File folder;
 
+    /**
+     * Constructor of the hierarchy builder.
+     * @param folder Path to the folder containing the hierarchies.
+     * @param relation Name of the relation.
+     */
 	public HierarchyBuilder(File folder, String relation) {
 		this.folder = folder;
 		this.relation = relation;

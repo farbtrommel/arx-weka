@@ -34,6 +34,14 @@ import weka.core.Attribute;
 import weka.core.Instance;
 import weka.core.Instances;
 
+/**
+ * This class convert an ARFF file to an ARX conform data structure.
+ *
+ * @author Andre Breitenfeld
+ * @author Simon Könnecke
+ * @author Christian Windolf
+ *
+ */
 public class ARFF2ARX {
 	
 	protected Instances instances;
