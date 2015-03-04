@@ -60,6 +60,13 @@ public class HierarchyBuilder {
 		this.relation = relation;
 	}
 
+    /**
+     * This method creates an hierarchy instance for a given attribute.
+     * @param att Attribute for which the hierarchy should be created
+     * @param instances
+     * @return Returns an ARX hierarchy instance.
+     * @throws IOException if it was not possible to locate the hierarchy file.
+     */
 	public Hierarchy getHierarchy(Attribute att, Instances instances) throws IOException {
 		File f = new File(this.folder, this.relation + "_hierarchy_"
 				+ att.name() + ".csv");
@@ -89,6 +96,7 @@ public class HierarchyBuilder {
 			missingValues[missingValues.length - 1] = "*";
 			hierarchy.add(missingValues);
 		} else {
+            // check type of attribute
 			if (att.isNominal()) {
 				Enumeration<Object> enumeration = att.enumerateValues();
 
@@ -96,6 +104,7 @@ public class HierarchyBuilder {
 					Object value = enumeration.nextElement();
 					hierarchy.add(value.toString(), "*");
 				}
+                // add asterisk as highest level of generalization
 				hierarchy.add("?", "*");
 			} else if (att.isNumeric()){
 				int index = att.index();
@@ -108,6 +117,7 @@ public class HierarchyBuilder {
 					} 
 					
 				}
+                // add asterisk as highest level of generalization
 				hierarchy.add("?", "*");
 			}
 		}

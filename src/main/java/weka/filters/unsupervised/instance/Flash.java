@@ -58,9 +58,9 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
      * Enumeration of anonymity criterion.
      */
     private enum Criterion {
-        kAnonymity,
-        lDiversity,
-        tCloseness
+        kAnonymity, // k-anonymity
+        lDiversity, // l-diversity
+        tCloseness  // t-closeness
     }
 
     /**
@@ -71,6 +71,7 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
         new Tag(1, "Entropy L-Diversity")
     };
 
+    /* <Constants> */
     protected static final int historySize = 200;
     protected static final double snapshotSizeDataset = 0.2d;
     protected static final double snapshotSizeSnapshot = 0.2d;
@@ -79,9 +80,10 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
     protected static final int KL_MIN_VALUE = 2;
     protected static final double T_MAX_VALUE = 1.0d;
     protected static final double T_MIN_VALUE = 0.001d;
+    /* </Constants> */
 
     /**
-     * Encapsulates literals
+     * Encapsulates literals for tool tips.
      */
     private static final class TipText {
         final static String k = "Parameter k for k-anonymity";
@@ -375,8 +377,9 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
         config.setMaxOutliers(_maxOutliers);
         config.setMetric(DEFAULT_METRIC);
 
-        // add criteria - k-anonymity
+        // checking which anonymity criterion to apply
         if (this.getEnableKAnonymity()) {
+            // add criteria - k-anonymity
             config.addCriterion(new KAnonymity(this.getValueK()));
         }
         if (this.getEnableLDiversity() || this.getEnableTCloseness()) {
@@ -394,8 +397,9 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
                     }
                 }
             }
-            // add criteria - t-closeness
+
             if (this.getEnableTCloseness()) {
+                // add criteria - t-closeness for each sensitive attribute
                 for (String attr : saColumns) {
                     config.addCriterion(new EqualDistanceTCloseness(attr, this.getValueT()));
                 }
@@ -404,7 +408,7 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
 
         converter.init(_hierarchyFolder, instances.relationName());
 
-        ARXAnonymizer anonymizer = new ARXAnonymizer();
+        final ARXAnonymizer anonymizer = new ARXAnonymizer();
         anonymizer.setSuppressionString("*");
         anonymizer.setMaximumSnapshotSizeDataset(snapshotSizeDataset);
         anonymizer.setMaximumSnapshotSizeSnapshot(snapshotSizeSnapshot);
