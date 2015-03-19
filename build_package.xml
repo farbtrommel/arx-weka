@@ -1,4 +1,4 @@
-<project name="anonymization" default="compile" basedir=".">
+<project name="weka-package" default="compile" basedir=".">
 <!-- 
   ===========================================================================
    Ant build file for weka a weka package. 
@@ -10,6 +10,7 @@
 -->
 
   <!-- set global properties for this build -->
+  <property name="package" value="arxAnonymizer"/>
   <property name="src" value="src/main/java"/>
   <property name="src-test" value="src/test/java"/>
   <property name="lib" value="lib" />
@@ -24,6 +25,8 @@
     <tstamp/>
   </target>
 
+  <import file="maven-build.xml"/>
+
    <!-- general classpath definition, incl. CLASSPATH env. variable,
    // but jars in lib directory have precedence over the CLASSPATH variable -->
   <path id="project.class.path">
@@ -34,6 +37,8 @@
     <pathelement location="${build}/classes"/>
     <pathelement location="${build}/testcases"/>
     <pathelement path="${java.class.path}" />
+    <path refid="build.classpath" />
+    <path refid="build.test.classpath" />
   </path>
 
 <!-- 
@@ -56,7 +61,7 @@
       optimize="${optimization}"
       debug="${debug}"
       deprecation="${deprecation}"
-      source="1.6" target="1.6">
+      source="1.7" target="1.7">
 
       <classpath refid="project.class.path" /> 
     </javac>

@@ -38,7 +38,7 @@ import weka.core.Instances;
  * This class converts an ARFF instance to instance as input for ARX.
  *
  * @author Andre Breitenfeld
- * @author Simon Könnecke
+ * @author Simon Koennecke
  * @author Christian Windolf
  *
  */

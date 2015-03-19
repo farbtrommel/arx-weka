@@ -34,7 +34,7 @@ import weka.core.Instances;
  * TODO
  *
  * @author Andre Breitenfeld
- * @author Simon Könnecke
+ * @author Simon Koennecke
  * @author Christian Windolf
  *
  */

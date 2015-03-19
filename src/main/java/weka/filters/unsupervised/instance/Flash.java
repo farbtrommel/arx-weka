@@ -36,13 +36,12 @@ import weka.gui.explorer.Explorer;
  * TODO
  *
  * @author Andre Breitenfeld
- * @author Simon Könnecke
+ * @author Simon Koennecke
  * @author Christian Windolf
- *
  */
 public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
 
-	protected Range _quasiIdentifiers = new Range("first-last");
+    protected Range _quasiIdentifiers = new Range("first-last");
     protected Range _sensitiveAttributes = new Range("");
     protected int _k = KL_MIN_VALUE;
     protected int _l = KL_MIN_VALUE;
@@ -67,8 +66,8 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
      * Array with tags for l-diversity variants.
      */
     public static final Tag[] L_DIVERSITY_VARIANTS = {
-        new Tag(0, "Distinct L-Diversity"),
-        new Tag(1, "Entropy L-Diversity")
+            new Tag(0, "Distinct L-Diversity"),
+            new Tag(1, "Entropy L-Diversity")
     };
 
     /* <Constants> */
@@ -101,6 +100,7 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
 
     /**
      * Returns the global info.
+     *
      * @return The global info.
      */
     @Override
@@ -110,85 +110,171 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
 
     /**
      * Returns the tip text for the hierarchy folder property.
+     *
      * @return String with corresponding tip text
      */
-    public String DataHierarchyFolderTipText(){
+    public String DataHierarchyFolderTipText() {
         return TipText.hierarchyFolder;
     }
-    public File getDataHierarchyFolder(){ return _hierarchyFolder; }
-    public void setDataHierarchyFolder(File value){ _hierarchyFolder = value; }
+
+    public File getDataHierarchyFolder() {
+        return _hierarchyFolder;
+    }
+
+    public void setDataHierarchyFolder(File value) {
+        _hierarchyFolder = value;
+    }
 
     /**
      * Returns the tip text for the quasi-identifiers.
+     *
      * @return String with corresponding tip text
      */
-	public String DataQuasiIdentifierTipText() {return TipText.quasiIdentifier; }
-	public String getDataQuasiIdentifier() { return _quasiIdentifiers.getRanges(); }
-	public void setDataQuasiIdentifier(String value) { _quasiIdentifiers.setRanges(value); }
+    public String DataQuasiIdentifierTipText() {
+        return TipText.quasiIdentifier;
+    }
+
+    public String getDataQuasiIdentifier() {
+        return _quasiIdentifiers.getRanges();
+    }
+
+    public void setDataQuasiIdentifier(String value) {
+        _quasiIdentifiers.setRanges(value);
+    }
 
     /**
      * Returns the tip text for the sensitive attributes.
+     *
      * @return String with corresponding tip text
      */
-    public String DataSensitiveAttributesTipText(){ return TipText.sensitiveAttributes; }
-    public String getDataSensitiveAttributes(){ return _sensitiveAttributes.getRanges(); }
-    public void setDataSensitiveAttributes(String value){ _sensitiveAttributes.setRanges(value); }
+    public String DataSensitiveAttributesTipText() {
+        return TipText.sensitiveAttributes;
+    }
+
+    public String getDataSensitiveAttributes() {
+        return _sensitiveAttributes.getRanges();
+    }
+
+    public void setDataSensitiveAttributes(String value) {
+        _sensitiveAttributes.setRanges(value);
+    }
 
     /**
      * Returns the tip text for enabling k-anonymity.
+     *
      * @return String with corresponding tip text
      */
-    public String enableKAnonymityTipText() { return TipText.enableKAnonymity; }
-    public boolean getEnableKAnonymity() { return this._criteria.contains(Criterion.kAnonymity); }
-    public void setEnableKAnonymity(boolean value) { this.enableCriteria(Criterion.kAnonymity, value); }
+    public String enableKAnonymityTipText() {
+        return TipText.enableKAnonymity;
+    }
+
+    public boolean getEnableKAnonymity() {
+        return this._criteria.contains(Criterion.kAnonymity);
+    }
+
+    public void setEnableKAnonymity(boolean value) {
+        this.enableCriteria(Criterion.kAnonymity, value);
+    }
 
     /**
      * Returns the tip text for enabling l-diversity.
+     *
      * @return String with corresponding tip text
      */
-    public String enableLDiversityTipText() { return TipText.enableLDiversity; }
-    public boolean getEnableLDiversity() { return this._criteria.contains(Criterion.lDiversity); }
-    public void setEnableLDiversity(boolean value) { this.enableCriteria(Criterion.lDiversity, value); }
+    public String enableLDiversityTipText() {
+        return TipText.enableLDiversity;
+    }
+
+    public boolean getEnableLDiversity() {
+        return this._criteria.contains(Criterion.lDiversity);
+    }
+
+    public void setEnableLDiversity(boolean value) {
+        this.enableCriteria(Criterion.lDiversity, value);
+    }
 
     /**
      * Returns the tip text for enabling t-closeness.
+     *
      * @return String with corresponding tip text
      */
-    public String enableTClosenessTipText() { return TipText.enableTCloseness; }
-    public boolean getEnableTCloseness() { return this._criteria.contains(Criterion.tCloseness); }
-    public void setEnableTCloseness(boolean value) { this.enableCriteria(Criterion.tCloseness, value); }
+    public String enableTClosenessTipText() {
+        return TipText.enableTCloseness;
+    }
+
+    public boolean getEnableTCloseness() {
+        return this._criteria.contains(Criterion.tCloseness);
+    }
+
+    public void setEnableTCloseness(boolean value) {
+        this.enableCriteria(Criterion.tCloseness, value);
+    }
 
     /**
      * Returns the tip text for the value of k.
+     *
      * @return String with corresponding tip text
      */
-    public String valueKTipText(){ return TipText.k; }
-    public int getValueK(){ return Math.max(Math.min(this._k, KL_MAX_VALUE), KL_MIN_VALUE); }
-    public void setValueK(int value){ _k = value; }
+    public String valueKTipText() {
+        return TipText.k;
+    }
+
+    public int getValueK() {
+        return Math.max(Math.min(this._k, KL_MAX_VALUE), KL_MIN_VALUE);
+    }
+
+    public void setValueK(int value) {
+        _k = value;
+    }
 
     /**
      * Returns the tip text for the value of l.
+     *
      * @return String with corresponding tip text
      */
-    public String valueLTipText(){ return TipText.l; }
-    public int getValueL(){ return Math.max(Math.min(this._l, KL_MAX_VALUE), KL_MIN_VALUE); }
-    public void setValueL(int value){ _l = value; }
+    public String valueLTipText() {
+        return TipText.l;
+    }
+
+    public int getValueL() {
+        return Math.max(Math.min(this._l, KL_MAX_VALUE), KL_MIN_VALUE);
+    }
+
+    public void setValueL(int value) {
+        _l = value;
+    }
 
     /**
      * Returns the tip text for the value of t.
+     *
      * @return String with corresponding tip text
      */
-    public String valueTTipText(){ return TipText.t; }
-    public double getValueT(){ return Math.max(Math.min(this._t, T_MAX_VALUE), T_MIN_VALUE); }
-    public void setValueT(double value){ _t = value; }
+    public String valueTTipText() {
+        return TipText.t;
+    }
+
+    public double getValueT() {
+        return Math.max(Math.min(this._t, T_MAX_VALUE), T_MIN_VALUE);
+    }
+
+    public void setValueT(double value) {
+        _t = value;
+    }
 
     /**
      * Returns the tip text for the variant of l-diversity.
+     *
      * @return String with corresponding tip text
      */
-    public String VariantTipText(){ return TipText.lVariant; }
-    public SelectedTag getVariant(){ return new SelectedTag(this._lVariant, L_DIVERSITY_VARIANTS); }
-    public void setVariant(SelectedTag value){
+    public String VariantTipText() {
+        return TipText.lVariant;
+    }
+
+    public SelectedTag getVariant() {
+        return new SelectedTag(this._lVariant, L_DIVERSITY_VARIANTS);
+    }
+
+    public void setVariant(SelectedTag value) {
         if (value.getTags() == L_DIVERSITY_VARIANTS) {
             this._lVariant = value.getSelectedTag().getID();
         }
@@ -196,7 +282,8 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
 
     /**
      * Enables or disables the specified anonymity criterion.
-     * @param c The criterion to enable or disable.
+     *
+     * @param c     The criterion to enable or disable.
      * @param value The state of activation.
      */
     private void enableCriteria(Criterion c, boolean value) {
@@ -205,14 +292,18 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
         else
             this._criteria.remove(c);
     }
-    
-    public String maxOutliersToolTip(){
-    	return TipText.maxOutliers;
+
+    public String maxOutliersToolTip() {
+        return TipText.maxOutliers;
     }
-    public double getMaxOutliers(){
-    	return this._maxOutliers;
+
+    public double getMaxOutliers() {
+        return this._maxOutliers;
     }
-    public void setMaxOutliers(double maxOutliers){ this._maxOutliers = maxOutliers; }
+
+    public void setMaxOutliers(double maxOutliers) {
+        this._maxOutliers = maxOutliers;
+    }
 
     public static void main(String[] args) {
         GUIChooser.main(args);
@@ -225,7 +316,7 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
         Vector<Option> newVector = new Vector<Option>();
 
         Option opt = super.listOptions().nextElement();
-        while(opt != null) {
+        while (opt != null) {
             newVector.addElement(opt);
             opt = super.listOptions().nextElement();
         }
@@ -287,9 +378,9 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
         tmpStr = Utils.getOption('T', options);
         this.setEnableTCloseness(tmpStr.length() != 0);
         if (this.getEnableKAnonymity()) {
-        	if(!tmpStr.isEmpty()){
-        		this.setValueT((Float.parseFloat(tmpStr)));
-        	}
+            if (!tmpStr.isEmpty()) {
+                this.setValueT((Float.parseFloat(tmpStr)));
+            }
         }
         // max outliers
         tmpStr = Utils.getOption("O", options);
@@ -300,7 +391,7 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
 
     @Override
     public String[] getOptions() {
-        List<String> options = new LinkedList<>(Arrays.asList(super.getOptions()));
+        List<String> options = new LinkedList<String>(Arrays.asList(super.getOptions()));
 
         if (this.getEnableKAnonymity()) {
             options.add("[K=" + this.getValueK() + "]");
@@ -330,6 +421,7 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
 
     /**
      * Returns the revision string.
+     *
      * @return The revision.
      */
     public String getRevision() {
@@ -338,6 +430,7 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
 
     /**
      * Determine the Output format.
+     *
      * @param inputFormat The input format.
      * @return The output format.
      */
@@ -347,15 +440,16 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
 
     /**
      * Process the given instance to apply anonymization algorithm.
+     *
      * @param instances The instance on which k-Anonymity, l-diversity or t-closeness should be applied.
      * @return An anonymized instance.
      * @throws IllegalArgumentException, if incorrect parameters are provided
      */
-	public Instances process(Instances instances) throws Exception {
+    public Instances process(Instances instances) throws Exception {
         final Instances output = new Instances(instances);
 
         this._quasiIdentifiers.setUpper(output.numAttributes() - 1);
-        this._sensitiveAttributes.setUpper(output.numAttributes() -1);
+        this._sensitiveAttributes.setUpper(output.numAttributes() - 1);
 
         List<String> saColumns = new LinkedList<String>();
         List<String> qiColumns = new LinkedList<String>();
@@ -421,8 +515,7 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
             result = anonymizer.anonymize(converter.getData(), config);
             long duration = System.currentTimeMillis() - start;
             System.out.println(this.getClass().toString() + duration);
-        }
-        else {
+        } else {
             result = anonymizer.anonymize(converter.getData(), config);
         }
 
@@ -458,30 +551,30 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
         this.setOutputFormat(new Instances(output, 0));
 
         return output;
-	}
+    }
 
     /**
      * Checks if the given parameters are suitable.
      */
-	protected void checkParameters(){
-		if(this._criteria.isEmpty()){
-			throw new IllegalArgumentException("Please choose at least one privacy criterion");
-		}
-        if ((this.getEnableTCloseness() || this.getEnableLDiversity())
-            && this._sensitiveAttributes.getSelection().length == 0) {
-            throw new IllegalArgumentException("Please specify at least one sensitive attribute " +
-                "for criteria l-Diversity or T-Closeness please ");
+    protected void checkParameters() {
+        if (this._criteria.isEmpty()) {
+            throw new IllegalArgumentException("Please choose at least one privacy criterion");
         }
-		if(this.getValueL() > this.getValueK()){
-			throw new IllegalArgumentException(
-                "l must be less or equal to k, but " + this.getValueL() + " > " + this.getValueK());
-		}
-		if(!_hierarchyFolder.isDirectory()){
-			throw new IllegalArgumentException("The hierarchy folder must be a directory");
-		}
-		if(_maxOutliers < 0 || _maxOutliers >= 1){
-			throw new IllegalArgumentException("maxOutliers must be between 0 and 1");
-		}
-	}
+        if ((this.getEnableTCloseness() || this.getEnableLDiversity())
+                && this._sensitiveAttributes.getSelection().length == 0) {
+            throw new IllegalArgumentException("Please specify at least one sensitive attribute " +
+                    "for criteria l-Diversity or T-Closeness please ");
+        }
+        if (this.getValueL() > this.getValueK()) {
+            throw new IllegalArgumentException(
+                    "l must be less or equal to k, but " + this.getValueL() + " > " + this.getValueK());
+        }
+        if (!_hierarchyFolder.isDirectory()) {
+            throw new IllegalArgumentException("The hierarchy folder must be a directory");
+        }
+        if (_maxOutliers < 0 || _maxOutliers >= 1) {
+            throw new IllegalArgumentException("maxOutliers must be between 0 and 1");
+        }
+    }
 
 }
