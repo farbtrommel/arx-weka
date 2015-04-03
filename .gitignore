@@ -3,6 +3,9 @@ i.*
 
 /bin
 /build
+/dist
+/target
+/doc
 .DS_Store
 .classpath
 .project

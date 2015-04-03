@@ -34,6 +34,14 @@ import weka.core.Attribute;
 import weka.core.Instance;
 import weka.core.Instances;
 
+/**
+ * This class converts an ARFF instance to instance as input for ARX.
+ *
+ * @author Andre Breitenfeld
+ * @author Simon Koennecke
+ * @author Christian Windolf
+ *
+ */
 public class ARFF2ARX {
 	
 	protected Instances instances;
@@ -54,18 +62,18 @@ public class ARFF2ARX {
 	 * this class
 	 */
 	protected ARFF2ARX(){}
-	
-	
+
+    /**
+     * Default constructor of this converter.
+     * @param instances The ARFF instance.
+     */
 	public ARFF2ARX(Instances instances){
-		
 		this.instances = instances;
 		
 		header = new String[instances.numAttributes()];
 		for(int i = 0; i < header.length; i++){
 			header[i] = instances.attribute(i).name();
 		}
-		
-		
 	}
 	
 	public ARFF2ARX setQi(String qi){
@@ -87,12 +95,18 @@ public class ARFF2ARX {
         return this;
     }
 
+    /**
+     *
+     * @param dir
+     * @param relation
+     * @return
+     * @throws IOException
+     */
 	public ARFF2ARX init(File dir, String relation) throws IOException{
 		if(this.qi == null){
 			throw new IllegalStateException("please set quasi identifying attributes first!");
 		}
-		
-		
+
 		if(relation == null){
 			relation = "";
 		}
@@ -126,10 +140,13 @@ public class ARFF2ARX {
 			}
 		}
 		return this;
-		
 	}
-	
 
+    /**
+     *
+     * @param instance
+     * @return
+     */
 	protected String[] convertRow(Instance instance){
 		String[] row = new String[instance.numAttributes()];
 		for(int i = 0; i < instance.numAttributes(); i++){
@@ -141,39 +158,58 @@ public class ARFF2ARX {
 		}
 		return row;
 	}
-	
+
+    /**
+     * Determines if a attribute is a sensitive attribute.
+     * @param attr The attribute to check.
+     * @return Returns true if the given attribute is a sensitive attribute.
+     */
 	public boolean isSensitive(String attr){
 		return contains(attr, sensitive);
 	}
-	
+
+    /**
+     * Determines if a attribute is a sensitive attribute.
+     * @param attr The attribute to check.
+     * @return Returns true if the given attribute is an qasi-identifier.
+     */
 	public boolean isQiAttribute(String attr){
 		return contains(attr, qi);
 	}
+
+    /**
+     *
+     * @return Returns the instance.
+     */
+	public Instances getInstances(){ return instances; }
+
+    /**
+     *
+     * @return Returns the header as string array.
+     */
+	public String[] getHeader(){ return header;	}
+
+    /**
+     *
+     * @return Returns the quasi-identifier as string array.
+     */
+	public String[] getQi(){ return qi;	}
 	
-	public Instances getInstances(){
-		return instances;
-	}
+	public Map<String, Hierarchy> getHierarchyMap(){ return hierarchyMap; }
 	
-	public String[] getHeader(){
-		return header;
-	}
-	
-	public String[] getQi(){
-		return qi;
-	}
-	
-	public Map<String, Hierarchy> getHierarchyMap(){
-		return hierarchyMap;
-	}
-	
-	public Data getData(){
-		return data;
-	}
-	
-	public String[] getSensitive(){
-		return sensitive;
-	}
-	
+	public Data getData(){ return data;	}
+
+    /**
+     *
+     * @return Returns the sensitive attributes as string array.
+     */
+	public String[] getSensitive(){	return sensitive; }
+
+    /**
+     *
+     * @param s
+     * @return
+     */
 	protected String[] splitToArray(String s){
 		if(s == null || s.trim().equals("")){
 			return new String[0];
@@ -195,9 +231,7 @@ public class ARFF2ARX {
 				result[iterator.nextIndex()] = iterator.next();
 			}
 			return result;
-			
 		}
-		
 	}
 	
 	@Override
@@ -223,9 +257,14 @@ public class ARFF2ARX {
 		}
 		
 		return builder.toString();
-		
 	}
-	
+
+    /**
+     * This method determines if an string is element of an array.
+     * @param s Element to locate in the array.
+     * @param array Array with string entries.
+     * @return Returns true is the given string is in the array.
+     */
 	protected boolean contains(String s, String[] array){
 		for(String value : array){
 			if(value.equals(s)){
@@ -237,5 +276,3 @@ public class ARFF2ARX {
 	
 		
 }
-
-	

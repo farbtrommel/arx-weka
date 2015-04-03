@@ -30,16 +30,43 @@ import org.deidentifier.arx.io.CSVDataInput;
 import weka.core.Attribute;
 import weka.core.Instances;
 
+/**
+ * TODO
+ *
+ * @author Andre Breitenfeld
+ * @author Simon Koennecke
+ * @author Christian Windolf
+ *
+ */
 public class HierarchyBuilder {
 
+    /**
+     * Name of the relation.
+     */
 	protected String relation;
+
+    /**
+     * Path to the folder containing the hierarchies.
+     */
 	protected File folder;
 
+    /**
+     * Constructor of the hierarchy builder.
+     * @param folder Path to the folder containing the hierarchies.
+     * @param relation Name of the relation.
+     */
 	public HierarchyBuilder(File folder, String relation) {
 		this.folder = folder;
 		this.relation = relation;
 	}
 
+    /**
+     * This method creates an hierarchy instance for a given attribute.
+     * @param att Attribute for which the hierarchy should be created
+     * @param instances
+     * @return Returns an ARX hierarchy instance.
+     * @throws IOException if it was not possible to locate the hierarchy file.
+     */
 	public Hierarchy getHierarchy(Attribute att, Instances instances) throws IOException {
 		File f = new File(this.folder, this.relation + "_hierarchy_"
 				+ att.name() + ".csv");
@@ -69,6 +96,7 @@ public class HierarchyBuilder {
 			missingValues[missingValues.length - 1] = "*";
 			hierarchy.add(missingValues);
 		} else {
+            // check type of attribute
 			if (att.isNominal()) {
 				Enumeration<Object> enumeration = att.enumerateValues();
 
@@ -76,6 +104,7 @@ public class HierarchyBuilder {
 					Object value = enumeration.nextElement();
 					hierarchy.add(value.toString(), "*");
 				}
+                // add asterisk as highest level of generalization
 				hierarchy.add("?", "*");
 			} else if (att.isNumeric()){
 				int index = att.index();
@@ -88,6 +117,7 @@ public class HierarchyBuilder {
 					} 
 					
 				}
+                // add asterisk as highest level of generalization
 				hierarchy.add("?", "*");
 			}
 		}
