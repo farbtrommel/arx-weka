@@ -114,7 +114,7 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
      *
      * @return String with corresponding tip text
      */
-    public String DataHierarchyFolderTipText() {
+    public String dataHierarchyFolderTipText() {
         return TipText.hierarchyFolder;
     }
 
@@ -131,7 +131,7 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
      *
      * @return String with corresponding tip text
      */
-    public String DataQuasiIdentifierTipText() {
+    public String dataQuasiIdentifierTipText() {
         return TipText.quasiIdentifier;
     }
 
@@ -148,7 +148,7 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
      *
      * @return String with corresponding tip text
      */
-    public String DataSensitiveAttributesTipText() {
+    public String dataSensitiveAttributesTipText() {
         return TipText.sensitiveAttributes;
     }
 
@@ -267,7 +267,7 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
      *
      * @return String with corresponding tip text
      */
-    public String VariantTipText() {
+    public String variantTipText() {
         return TipText.lVariant;
     }
 
@@ -294,7 +294,7 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
             this._criteria.remove(c);
     }
 
-    public String maxOutliersToolTip() {
+    public String maxOutliersTipText() {
         return TipText.maxOutliers;
     }
 
