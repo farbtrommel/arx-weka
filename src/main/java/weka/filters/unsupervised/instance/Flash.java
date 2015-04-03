@@ -41,8 +41,12 @@ import weka.gui.explorer.Explorer;
  */
 public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
 
-
-    protected Range _quasiIdentifiers = new Range("first-last");
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -8436320277782547844L;
+	
+	protected Range _quasiIdentifiers = new Range("first-last");
     protected Range _sensitiveAttributes = new Range("");
     protected int _k = KL_MIN_VALUE;
     protected int _l = KL_MIN_VALUE;
