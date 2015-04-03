@@ -450,6 +450,9 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
      * @throws IllegalArgumentException, if incorrect parameters are provided
      */
     public Instances process(Instances instances) throws Exception {
+    	if(instances.numInstances() <= 1){
+    		return instances;
+    	}
         final Instances output = new Instances(instances);
 
         this._quasiIdentifiers.setUpper(output.numAttributes() - 1);
