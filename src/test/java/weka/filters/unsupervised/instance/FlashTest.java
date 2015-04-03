@@ -23,7 +23,6 @@ import weka.filters.Filter;
  * @version $Revision: 1.0 $
  */
 public class FlashTest extends AbstractFilterTest {
-	private static final String DATA_PATH = "weka/filters/data/";
 
 	public FlashTest(String name) {
 		super(name);
@@ -51,7 +50,7 @@ public class FlashTest extends AbstractFilterTest {
 				new BufferedReader(
 						new InputStreamReader(
 								ClassLoader
-										.getSystemResourceAsStream(DATA_PATH + "FlashTest.arff"))));
+										.getSystemResourceAsStream("FlashTest.arff"))));
 		m_Instances.setClassIndex(1);
 		m_OptionTester = getOptionTester();
 		m_GOETester = getGOETester();
@@ -75,7 +74,7 @@ public class FlashTest extends AbstractFilterTest {
 	 */
 	private void copyHierarchies(String hierarchy) throws IOException{
 		String filename = "test_hierarchy_" + hierarchy + ".csv";
-		InputStream in = ClassLoader.getSystemResourceAsStream(DATA_PATH + filename);
+		InputStream in = ClassLoader.getSystemResourceAsStream(filename);
 		File file = new File(hierarchyFolder, filename);
 		file.createNewFile();
 		OutputStream out = new FileOutputStream(file);
