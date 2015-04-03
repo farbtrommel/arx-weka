@@ -16,3 +16,5 @@ i.*
 *.iml
 *.war
 *.ear
+
+.*.swp
