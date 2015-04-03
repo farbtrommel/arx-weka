@@ -315,11 +315,10 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
     @Override
     public Enumeration<Option> listOptions() {
         Vector<Option> newVector = new Vector<Option>();
-        Option opt = super.listOptions().nextElement();
-        while (opt != null) {
-            newVector.addElement(opt);
-            opt = super.listOptions().nextElement();
-
+        Enumeration<Option> options = super.listOptions();
+        
+        while (options.hasMoreElements()) {
+            newVector.addElement(options.nextElement());
         }
 
         newVector.addElement(new Option("\tSpecify hierarchy folder", "H", 1, "-H <h>"));
