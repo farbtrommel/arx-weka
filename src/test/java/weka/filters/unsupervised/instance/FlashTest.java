@@ -8,8 +8,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
 import weka.core.Instances;
 import weka.filters.AbstractFilterTest;
 import weka.filters.Filter;
@@ -59,19 +57,22 @@ public class FlashTest extends AbstractFilterTest {
 		m_GOETester = getGOETester();
 		m_FilteredClassifier = getFilteredClassifier();
 		
-		
-		
-		
 		copyHierarchies("age");
 		copyHierarchies("car");
 		copyHierarchies("children");
 		copyHierarchies("name");
 		copyHierarchies("zip");
-		
-		
-		
+			
 	}
 	
+
+	
+	/**
+	 * Copies hierarchies from the class path to the temporary 
+	 * folder {@link #hierarchyFolder}.
+	 * @param hierarchy
+	 * @throws IOException
+	 */
 	private void copyHierarchies(String hierarchy) throws IOException{
 		String filename = "test_hierarchy_" + hierarchy + ".csv";
 		InputStream in = ClassLoader.getSystemResourceAsStream(DATA_PATH + filename);
@@ -102,6 +103,8 @@ public class FlashTest extends AbstractFilterTest {
 		m_GOETester = null;
 		m_FilteredClassifier = null;
 	}
+	
+
 	
 	public void testKAnonymityFilter(){
 		Instances result = useFilter();
