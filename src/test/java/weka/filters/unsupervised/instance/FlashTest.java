@@ -55,7 +55,7 @@ public class FlashTest extends AbstractFilterTest {
 		m_Instances.setClassIndex(1);
 		m_OptionTester = getOptionTester();
 		m_GOETester = getGOETester();
-		m_FilteredClassifier = getFilteredClassifier();
+		m_FilteredClassifier = null;
 		
 		copyHierarchies("age");
 		copyHierarchies("car");
