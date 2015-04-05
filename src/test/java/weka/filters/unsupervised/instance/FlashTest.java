@@ -1,5 +1,7 @@
 package weka.filters.unsupervised.instance;
 
+import static weka.core.Attribute.*;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -7,7 +9,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
+import weka.core.Attribute;
+import weka.core.Instance;
 import weka.core.Instances;
 import weka.filters.AbstractFilterTest;
 import weka.filters.Filter;
@@ -104,10 +111,50 @@ public class FlashTest extends AbstractFilterTest {
 	}
 	
 
-	
-	public void testKAnonymityFilter(){
+	/**
+	 * Check that the number of instances remains the same
+	 */
+	public void testKAnonymityFilterAmount(){
 		Instances result = useFilter();
 		assertEquals(m_Instances.numInstances(), result.numInstances());
+	}
+	
+	public void testKAnonymity(){
+		Instances result = useFilter();
+		assertTrue("The result has an identifier that occurs less than 2 times", checkKAnonymity(result, 2,0,1,2,3,4));
+	}
+	
+	private boolean checkKAnonymity(Instances instances, int k, int ...identifiers ){
+		Map<String, Integer> counters = new HashMap<String, Integer>();
+		
+		for(int i = 0; i < instances.numInstances(); i++){
+			StringBuilder identifier = new StringBuilder();
+			for(int id : identifiers){
+				Instance instance = instances.instance(i);
+				Attribute attr = instance.attribute(id);
+				if(attr.type() == NUMERIC){
+					identifier.append(instance.value(id));
+				} else {
+					identifier.append(instance.stringValue(id));
+				}
+				
+			}
+			Integer counter = counters.get(identifier.toString());
+			if(counter == null){
+				counter = new Integer(1);
+			} else {
+				counter = new Integer(counter + 1);
+			}
+			counters.put(identifier.toString(), counter);
+		}
+		for(Entry<String, Integer> entry : counters.entrySet()){
+			if(entry.getValue() < k){
+				return false;
+			}
+		}
+		
+		return true;
+		
 	}
 	
 	
