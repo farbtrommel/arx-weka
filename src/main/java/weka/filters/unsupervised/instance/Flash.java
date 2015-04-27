@@ -33,7 +33,9 @@ import weka.gui.explorer.Explorer;
 
 
 /**
- * TODO
+ * This package provides algorithms to apply k-Anonymity, l-Diversity and t-Closeness with traversal strategy "Flash"
+ * for an optimal transformation to an anonymized dataset with respect to minimal information loss.
+ * The algorithms originate from the ARX Data Anonymization Toolkit, please read for further information's: http://arx.deidentifier.org/development/algorithms/.
  *
  * @author Andre Breitenfeld
  * @author Simon Koennecke
@@ -42,11 +44,11 @@ import weka.gui.explorer.Explorer;
 public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = -8436320277782547844L;
-	
-	protected Range _quasiIdentifiers = new Range("first-last");
+     *
+     */
+    private static final long serialVersionUID = -8436320277782547844L;
+
+    protected Range _quasiIdentifiers = new Range("first-last");
     protected Range _sensitiveAttributes = new Range("");
     protected int _k = KL_MIN_VALUE;
     protected int _l = KL_MIN_VALUE;
@@ -320,7 +322,7 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
     public Enumeration<Option> listOptions() {
         Vector<Option> newVector = new Vector<Option>();
         Enumeration<Option> options = super.listOptions();
-        
+
         while (options.hasMoreElements()) {
             newVector.addElement(options.nextElement());
         }
@@ -450,9 +452,9 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
      * @throws IllegalArgumentException, if incorrect parameters are provided
      */
     public Instances process(Instances instances) throws Exception {
-    	if(instances.numInstances() <= 1){
-    		return instances;
-    	}
+        if (instances.numInstances() <= 1) {
+            return instances;
+        }
         final Instances output = new Instances(instances);
 
         this._quasiIdentifiers.setUpper(output.numAttributes() - 1);

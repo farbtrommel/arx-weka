@@ -16,17 +16,17 @@
             <artifactId>junit</artifactId>
             <version>4.8.2</version>
             <scope>test</scope>
-	</dependency>
+        </dependency>
         <dependency>
             <groupId>nz.ac.waikato.cms.weka</groupId>
             <artifactId>weka-dev</artifactId>
             <version>3.7.11</version>
         </dependency>
-	<dependency>
-	  <groupId>libarx</groupId>
-	  <artifactId>libarx</artifactId>
-	  <version>2.2.0</version>
-	</dependency>
+        <dependency>
+            <groupId>libarx</groupId>
+            <artifactId>libarx</artifactId>
+            <version>2.2.0</version>
+        </dependency>
         <dependency>
             <groupId>nz.ac.waikato.cms.weka</groupId>
             <artifactId>weka-dev</artifactId>

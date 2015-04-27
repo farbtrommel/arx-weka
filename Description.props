@@ -26,7 +26,7 @@ Maintainer=Simon Könnecke <simon.koennecke@fu-berlin.de>
 License=GNU GPL3
 
 # Description (required)
-Description=TODO description
+Description=This package provides algorithms to apply k-Anonymity, l-Diversity and t-Closeness with traversal strategy "Flash", for an optimal transformation to an anonymized dataset with respect to minimal information loss. The algorithms originate from the ARX Data Anonymization Toolkit, please read for further information's: http://arx.deidentifier.org/development/algorithms/.
 
 # Package URL for obtaining the package archive (required)
 PackageURL=https://github.com/farbtrommel/arx-weka/tree/master/jars/arxAnonymizer-1.0.jar

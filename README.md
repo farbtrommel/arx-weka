@@ -1,6 +1,6 @@
 ARX - Weka Anonymization Filter
 ====
-
+This package provides algorithms to apply k-Anonymity, l-Diversity and t-Closeness with traversal strategy "Flash", for an optimal transformation to an anonymized dataset with respect to minimal information loss. The algorithms originate from the ARX Data Anonymization Toolkit, please read for further information's: http://arx.deidentifier.org/development/algorithms/.
 
 
 License
