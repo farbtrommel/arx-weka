@@ -180,21 +180,21 @@ public class ARFF2ARX {
     }
 
     /**
-     * @return Returns the instance.
+     * @return Weka instance.
      */
     public Instances getInstances() {
         return instances;
     }
 
     /**
-     * @return Returns the header as string array.
+     * @return Header as string array.
      */
     public String[] getHeader() {
         return header;
     }
 
     /**
-     * @return Returns the quasi-identifier as string array.
+     * @return Quasi-identifier as string array.
      */
     public String[] getQi() {
         return qi;
@@ -209,7 +209,7 @@ public class ARFF2ARX {
     }
 
     /**
-     * @return Returns the sensitive attributes as string array.
+     * @return Sensitive attributes as string array.
      */
     public String[] getSensitive() {
         return sensitive;

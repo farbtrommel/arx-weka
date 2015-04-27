@@ -65,7 +65,7 @@ public class HierarchyBuilder {
      *
      * @param att       Attribute for which the hierarchy should be created
      * @param instances
-     * @return Returns an ARX hierarchy instance.
+     * @return ARX hierarchy instance.
      * @throws IOException if it was not possible to locate the hierarchy file.
      */
     public Hierarchy getHierarchy(Attribute att, Instances instances) throws IOException {

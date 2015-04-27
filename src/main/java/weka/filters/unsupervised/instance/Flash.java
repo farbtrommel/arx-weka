@@ -43,9 +43,6 @@ import weka.gui.explorer.Explorer;
  */
 public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = -8436320277782547844L;
 
     protected Range _quasiIdentifiers = new Range("first-last");
@@ -124,10 +121,20 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
         return TipText.hierarchyFolder;
     }
 
+    /**
+     * Gets the data hierarchy folder.
+     *
+     * @return Returns a file object
+     */
     public File getDataHierarchyFolder() {
         return _hierarchyFolder;
     }
 
+    /**
+     * Sets the data hierarchy folder.
+     *
+     * @param value Fle object
+     */
     public void setDataHierarchyFolder(File value) {
         _hierarchyFolder = value;
     }
@@ -141,10 +148,20 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
         return TipText.quasiIdentifier;
     }
 
+    /**
+     * Gets the quasi identifiers.
+     *
+     * @return Range string with quasi identifiers
+     */
     public String getDataQuasiIdentifier() {
         return _quasiIdentifiers.getRanges();
     }
 
+    /**
+     * Sets the quasi identifiers.
+     *
+     * @param value Range string with quasi identifiers
+     */
     public void setDataQuasiIdentifier(String value) {
         _quasiIdentifiers.setRanges(value);
     }
@@ -158,10 +175,20 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
         return TipText.sensitiveAttributes;
     }
 
+    /**
+     * Gets the sensitive attributes.
+     *
+     * @return Range string with sensitive attributes
+     */
     public String getDataSensitiveAttributes() {
         return _sensitiveAttributes.getRanges();
     }
 
+    /**
+     * Sets the sensitive attributes.
+     *
+     * @param value Range string with sensitive attributes
+     */
     public void setDataSensitiveAttributes(String value) {
         _sensitiveAttributes.setRanges(value);
     }
@@ -175,10 +202,20 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
         return TipText.enableKAnonymity;
     }
 
+    /**
+     * Get k-Anonymity activation.
+     *
+     * @return Boolean indicate
+     */
     public boolean getEnableKAnonymity() {
         return this._criteria.contains(Criterion.kAnonymity);
     }
 
+    /**
+     * Enables or disables k-Anonymity.
+     *
+     * @param value Boolean value
+     */
     public void setEnableKAnonymity(boolean value) {
         this.enableCriteria(Criterion.kAnonymity, value);
     }
@@ -192,10 +229,20 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
         return TipText.enableLDiversity;
     }
 
+    /**
+     * Get l-Diversity activation.
+     *
+     * @return Boolean indicate
+     */
     public boolean getEnableLDiversity() {
         return this._criteria.contains(Criterion.lDiversity);
     }
 
+    /**
+     * Enables or disables l-Diversity.
+     *
+     * @param value Boolean value
+     */
     public void setEnableLDiversity(boolean value) {
         this.enableCriteria(Criterion.lDiversity, value);
     }
@@ -209,10 +256,20 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
         return TipText.enableTCloseness;
     }
 
+    /**
+     * Get t-Closeness activation.
+     *
+     * @return Boolean indicate
+     */
     public boolean getEnableTCloseness() {
         return this._criteria.contains(Criterion.tCloseness);
     }
 
+    /**
+     * Enables or disables t-Closeness.
+     *
+     * @param value Boolean value
+     */
     public void setEnableTCloseness(boolean value) {
         this.enableCriteria(Criterion.tCloseness, value);
     }
@@ -226,10 +283,20 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
         return TipText.k;
     }
 
+    /**
+     * Gets the value for k.
+     *
+     * @return Integer for k
+     */
     public int getValueK() {
         return Math.max(Math.min(this._k, KL_MAX_VALUE), KL_MIN_VALUE);
     }
 
+    /**
+     * Sets the value for k.
+     *
+     * @param value Integer for k
+     */
     public void setValueK(int value) {
         _k = value;
     }
@@ -243,10 +310,20 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
         return TipText.l;
     }
 
+    /**
+     * Gets the value for l.
+     *
+     * @return Integer for l
+     */
     public int getValueL() {
         return Math.max(Math.min(this._l, KL_MAX_VALUE), KL_MIN_VALUE);
     }
 
+    /**
+     * Sets the value for l.
+     *
+     * @param value Integer for l
+     */
     public void setValueL(int value) {
         _l = value;
     }
@@ -260,10 +337,20 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
         return TipText.t;
     }
 
+    /**
+     * Gets the value for t.
+     *
+     * @return Integer for t
+     */
     public double getValueT() {
         return Math.max(Math.min(this._t, T_MAX_VALUE), T_MIN_VALUE);
     }
 
+    /**
+     * Sets the value for t.
+     *
+     * @param value Integer for t
+     */
     public void setValueT(double value) {
         _t = value;
     }
@@ -277,6 +364,11 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
         return TipText.lVariant;
     }
 
+    /**
+     * Gets the selected variant for l-Diversity.
+     *
+     * @return l-Diversity variant
+     */
     public SelectedTag getVariant() {
         return new SelectedTag(this._lVariant, L_DIVERSITY_VARIANTS);
     }
@@ -304,10 +396,20 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
         return TipText.maxOutliers;
     }
 
+    /**
+     * Gets the value for max outliers.
+     *
+     * @return Double for max outliers
+     */
     public double getMaxOutliers() {
         return this._maxOutliers;
     }
 
+    /**
+     * Sets the value for max outliers.
+     *
+     * @param maxOutliers Double for max outliers
+     */
     public void setMaxOutliers(double maxOutliers) {
         this._maxOutliers = maxOutliers;
     }
@@ -428,7 +530,7 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
     /**
      * Returns the revision string.
      *
-     * @return The revision.
+     * @return The revision string.
      */
     public String getRevision() {
         return RevisionUtils.extract("$Revision: 1.0.1 $");
