@@ -22,3 +22,4 @@ Before using working with this project you must install the arxlib to your local
 ```bash
 ./install_arx.sh
 ```
+See javadoc under http://farbtrommel.github.io/arx-weka/
