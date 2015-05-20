@@ -415,9 +415,8 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
     }
 
     public static void main(String[] args) {
-        GUIChooser.main(args);
-        //Explorer.main(args);
-        //runFilter(new Flash(), args);
+        //GUIChooser.main(args);
+        runFilter(new Flash(), args);
     }
 
     @Override
@@ -501,7 +500,7 @@ public class Flash extends SimpleBatchFilter implements UnsupervisedFilter {
     public String[] getOptions() {
         List<String> options = new LinkedList<String>(Arrays.asList(super.getOptions()));
 
-        if (this.getEnableKAnonymity() && this.getValueK() > 2) {
+        if (this.getEnableKAnonymity() && this.getValueK() > 0) {
             options.add("[K=" + this.getValueK() + "]");
         }
         if (this.getEnableLDiversity()) {

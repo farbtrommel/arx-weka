@@ -9,6 +9,8 @@
   ===========================================================================
 -->
 
+  <import file="maven-build.xml"/>
+
   <!-- set global properties for this build -->
   <property name="package" value="arxAnonymizer"/>
   <property name="src" value="src/main/java"/>
@@ -24,8 +26,6 @@
     <!-- Create the time stamp -->
     <tstamp/>
   </target>
-
-  <import file="maven-build.xml"/>
 
    <!-- general classpath definition, incl. CLASSPATH env. variable,
    // but jars in lib directory have precedence over the CLASSPATH variable -->
@@ -157,8 +157,9 @@
   <!-- Put everything in ${build}/classes into the ${package}.jar file -->
   <target name="exejar" depends="compile, docs, init_dist"
    description="Create a binary jar file in ./dist">
-    <jar jarfile="${dist}/${package}.jar" 
+    <jar jarfile="${dist}/${package}.jar"
       basedir="${build}/classes">
+      <zipgroupfileset dir="${lib}" includes="**/*.jar" />
     </jar>
   </target>
 

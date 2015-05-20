@@ -31,7 +31,7 @@ import weka.test.Regression;
  * java weka.filters.unsupervised.instance.FlashTest
  * 
  * @author Christian Windolf
- * @author Simon Könnecke
+ * @author Simon Koennecke
  * @author Andre Breitenfeld
  * @version $Revision: 1.0 $
  */
